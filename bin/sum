@@ -1,0 +1,1 @@
+awk 'END { print SUM }SUM += $0 {}'
