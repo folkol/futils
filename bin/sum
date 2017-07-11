@@ -1,2 +1,4 @@
+#!/bin/sh
+
 awk '{ SUM += $0 } END { print SUM }'
 
