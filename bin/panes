@@ -1,0 +1,12 @@
+#! /bin/bash
+
+osascript -e 'tell application "System Events" to key code 45 using command down' 
+
+word="$1"
+shift 1
+osascript -e "tell application \"System Events\" to keystroke \"$word\""
+for word in "$@"; do
+    osascript -e 'tell application "System Events" to key code 2 using command down' 
+    osascript -e "tell application \"System Events\" to keystroke \"$word\""
+done
+
