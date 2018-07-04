@@ -1,0 +1,22 @@
+#! /usr/bin/osascript
+
+on run argv
+    tell application "iTerm"
+    	tell current window
+    		create tab with default profile
+    	end tell
+    	
+    	tell current session of current window
+            repeat with i from 1 to (count of argv - 1)
+                split vertically with default profile
+            end repeat
+    	end tell
+    	
+    	repeat with i from 1 to count of argv
+    		tell session i of current tab of current window
+    			write text (item i of argv) newline NO
+    		end tell
+    	end repeat
+    end tell
+end run
+
