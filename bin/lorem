@@ -9,15 +9,32 @@ from os.path import expanduser
 import json
 import string
 
+ENDINGS = '.?!'
+
+
 def rebuild_db(paragraphts, sentences):
+    def pairwise(iterable):
+        a, b = tee(iterable)
+        return zip(a, islice(b, 1, None))
+
+    def words(f):
+        for line in f:
+            for word in line.strip().split():
+                yield word
+
     states = defaultdict(set)
     first_words = set()
     for a, b in pairwise(words(sys.stdin)):
-        a = a.lower().translate(str.maketrans('', '', string.punctuation))
-        b = b.lower().translate(str.maketrans('', '', string.punctuation))
-        if b not in states[a]:
+        for c in '-()[]_\\':
+            a = a.replace(c, '')
+            b = b.replace(c, '')
+
+        a = a.lower()
+        b = b.lower()
+
+        if a and b:
             states[a].add(b)
-        if a.endswith('.') and a not in first_words:
+        if a and a[-1] in ENDINGS and b not in first_words:
             first_words.add(b)
 
     with open(expanduser('~/.lorem'), 'w+') as f:
@@ -26,6 +43,7 @@ def rebuild_db(paragraphts, sentences):
             'first_words': list(first_words)
         }
         json.dump(db, f, indent=4)
+
 
 def generate_words(db, paragraphs, sentences):
     states = db['states']
@@ -36,21 +54,13 @@ def generate_words(db, paragraphs, sentences):
             words = []
             word = random.choice(first_words)
             words.append(word.title())
-            while not word.endswith('.'):
+            while word[-1] not in ENDINGS:
                 word = random.choice(states[word.lower()])
                 words.append(word)
             print(' '.join(words), end='  ')
         print()
         print()
 
-def pairwise(iterable):
-    a, b = tee(iterable)
-    return zip(a, islice(b, 1, None))
-
-def words(f):
-    for line in f:
-        for word in line.strip().split():
-            yield word
 
 def main():
     parser = argparse.ArgumentParser(description='Random text generator.')
@@ -69,6 +79,7 @@ def main():
             print(f'Database not found, rerun with --rebuild.')
             sys.exit(1)
         generate_words(db, args.paragraphs, args.sentences)
+
 
 if __name__ == '__main__':
     main()
