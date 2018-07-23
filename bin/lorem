@@ -1,0 +1,74 @@
+#! /usr/bin/env python3
+
+import sys
+from itertools import tee, islice
+from collections import defaultdict
+import random
+import argparse
+from os.path import expanduser
+import json
+import string
+
+def rebuild_db(paragraphts, sentences):
+    states = defaultdict(set)
+    first_words = set()
+    for a, b in pairwise(words(sys.stdin)):
+        a = a.lower().translate(str.maketrans('', '', string.punctuation))
+        b = b.lower().translate(str.maketrans('', '', string.punctuation))
+        if b not in states[a]:
+            states[a].add(b)
+        if a.endswith('.') and a not in first_words:
+            first_words.add(b)
+
+    with open(expanduser('~/.lorem'), 'w+') as f:
+        db = {
+            'states': {k: list(v) for k, v in states.items()},
+            'first_words': list(first_words)
+        }
+        json.dump(db, f, indent=4)
+
+def generate_words(db, paragraphs, sentences):
+    states = db['states']
+    first_words = db['first_words']
+    for i in range(paragraphs):
+        print('  ', end='')
+        for i in range(sentences):
+            words = []
+            word = random.choice(first_words)
+            words.append(word.title())
+            while not word.endswith('.'):
+                word = random.choice(states[word.lower()])
+                words.append(word)
+            print(' '.join(words), end='  ')
+        print()
+        print()
+
+def pairwise(iterable):
+    a, b = tee(iterable)
+    return zip(a, islice(b, 1, None))
+
+def words(f):
+    for line in f:
+        for word in line.strip().split():
+            yield word
+
+def main():
+    parser = argparse.ArgumentParser(description='Random text generator.')
+    parser.add_argument('--paragraphs', '-p', type=int, default=3, help='Number of paragraphs.')
+    parser.add_argument('--sentences', '-s', type=int, default=10, help='Number of sentences per paragraph.')
+    parser.add_argument('--rebuild', action='store_true', help='Rebuild database with text from stdin.')
+    args = parser.parse_args()
+
+    if args.rebuild:
+        rebuild_db(args.paragraphs, args.sentences)
+    else:
+        try:
+            with open(expanduser('~/.lorem')) as f:
+                db = json.load(f)
+        except FileNotFoundError:
+            print(f'Database not found, rerun with --rebuild.')
+            sys.exit(1)
+        generate_words(db, args.paragraphs, args.sentences)
+
+if __name__ == '__main__':
+    main()
