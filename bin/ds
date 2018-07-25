@@ -1,0 +1,21 @@
+#! /usr/bin/env python3
+"""Calculates named descriptive statistics for numbers read stdin."""
+import statistics
+import sys
+
+funcs = ['harmonic_mean', 'mean', 'median', 'median_grouped', 'median_high', 'median_low', 'mode', 'pstdev',
+         'pvariance', 'stdev', 'variance']
+
+if len(sys.argv) > 1 and sys.argv[1] == '-h':
+    print("usage: ds [ stat ... ]")
+    print("\tCalculates the named descriptive statistics from numbers given on stdin.")
+    print("\texample: seq 666 | ds mean stdev")
+    print(f"\tfunctions: {' '.join(funcs)}")
+    sys.exit()
+
+xs = [float(x.strip()) for x in sys.stdin]
+
+for func in sys.argv[1:] or ('mean', 'stdev'):
+    f = getattr(statistics, func)
+    print(f'{func}={f(xs):<10.2f}', end='')
+print()
