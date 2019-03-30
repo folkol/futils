@@ -7,12 +7,11 @@ import random
 import argparse
 from os.path import expanduser
 import json
-import string
 
 ENDINGS = '.?!'
 
 
-def rebuild_db(paragraphts, sentences):
+def rebuild_db():
     def pairwise(iterable):
         a, b = tee(iterable)
         return zip(a, islice(b, 1, None))
@@ -70,7 +69,7 @@ def main():
     args = parser.parse_args()
 
     if args.rebuild:
-        rebuild_db(args.paragraphs, args.sentences)
+        rebuild_db()
     else:
         try:
             with open(expanduser('~/.lorem')) as f:
