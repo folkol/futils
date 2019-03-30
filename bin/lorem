@@ -17,7 +17,7 @@ def rebuild_db(f):
             for word in line.split():
                 yield word
 
-    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))  # Good God
     fst = snd = None
     for word in words(f):
         stats[fst][snd][word] += 1
