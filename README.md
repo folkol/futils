@@ -19,5 +19,4 @@ $ make install
 
 The lorem generator needs a database of state transitions in ~/.lorem. If you
 do not have a body of text to generate one from, feel free to use the sample
-database in this repo. (Generated from
-http://arkhamarchivist.com/free-complete-lovecraft-ebook-nook-kindle/.)
+database in this repo. (Generated from The Call of Cthulu.)
