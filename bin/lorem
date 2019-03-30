@@ -41,10 +41,9 @@ def generate_words(states, paragraphs, sentences):
     for _ in range(paragraphs):
         print('  ', end='')
         for _ in range(sentences):
-            fst = snd = 'null'
-            word = random.choices(*states['null']['null'])[0]
+            fst = 'null'
+            snd = word = random.choices(*states['null']['null'])[0]
             words = [word.capitalize()]
-            fst, snd = snd, word
             while word[-1] not in ENDINGS:
                 choices = states[fst][snd]
                 word = random.choices(*choices)[0]
