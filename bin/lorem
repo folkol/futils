@@ -1,62 +1,56 @@
 #! /usr/bin/env python3
 
-import sys
-from itertools import tee, islice
-from collections import defaultdict
-import random
 import argparse
-from os.path import expanduser
 import json
+import random
+import sys
+from collections import defaultdict
+
+from os.path import expanduser
 
 ENDINGS = '.?!'
 
 
-def rebuild_db():
-    def pairwise(iterable):
-        a, b = tee(iterable)
-        return zip(a, islice(b, 1, None))
-
+def rebuild_db(f):
     def words(f):
         for line in f:
-            for word in line.strip().split():
+            for word in line.split():
                 yield word
 
-    states = defaultdict(set)
-    first_words = set()
-    for a, b in pairwise(words(sys.stdin)):
-        for c in '-()[]_\\':
-            a = a.replace(c, '')
-            b = b.replace(c, '')
+    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    fst = snd = None
+    for word in words(f):
+        stats[fst][snd][word] += 1
+        if word[-1] in ENDINGS:
+            fst = snd = None
+        else:
+            fst, snd = snd, word
 
-        a = a.lower()
-        b = b.lower()
-
-        if a and b:
-            states[a].add(b)
-        if a and a[-1] in ENDINGS and b not in first_words:
-            first_words.add(b)
+    states = defaultdict(dict)
+    for fst, seconds in stats.items():
+        for snd, thirds in seconds.items():
+            words = [word for word, _ in thirds.items()]
+            weights = [weight for _, weight in thirds.items()]
+            states[fst][snd] = [words, weights]
 
     with open(expanduser('~/.lorem'), 'w+') as f:
-        db = {
-            'states': {k: list(v) for k, v in states.items()},
-            'first_words': list(first_words)
-        }
-        json.dump(db, f, indent=4)
+        json.dump(states, f, indent=4)
 
 
-def generate_words(db, paragraphs, sentences):
-    states = db['states']
-    first_words = db['first_words']
-    for i in range(paragraphs):
+def generate_words(states, paragraphs, sentences):
+    for _ in range(paragraphs):
         print('  ', end='')
-        for i in range(sentences):
-            words = []
-            word = random.choice(first_words)
-            words.append(word.title())
+        for _ in range(sentences):
+            fst = snd = 'null'
+            word = random.choices(*states['null']['null'])[0]
+            words = [word.capitalize()]
+            fst, snd = snd, word
             while word[-1] not in ENDINGS:
-                word = random.choice(states[word.lower()])
+                choices = states[fst][snd]
+                word = random.choices(*choices)[0]
                 words.append(word)
-            print(' '.join(words), end='  ')
+                fst, snd = snd, word
+            print(' '.join(words), end=' ')
         print()
         print()
 
@@ -69,7 +63,7 @@ def main():
     args = parser.parse_args()
 
     if args.rebuild:
-        rebuild_db()
+        rebuild_db(sys.stdin)
     else:
         try:
             with open(expanduser('~/.lorem')) as f:
