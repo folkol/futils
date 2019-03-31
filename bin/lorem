@@ -34,10 +34,11 @@ def rebuild_db(f):
             states[fst][snd] = [words, weights]
 
     with open(expanduser('~/.lorem'), 'w+') as f:
-        json.dump(states, f, indent=4)
+        json.dump({'states': states}, f, indent=4)
 
 
-def generate_words(states, paragraphs, sentences):
+def generate_words(db, paragraphs, sentences):
+    states = db['states']
     for _ in range(paragraphs):
         print('  ', end='')
         for _ in range(sentences):
