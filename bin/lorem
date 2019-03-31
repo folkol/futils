@@ -11,30 +11,22 @@ from os.path import expanduser
 ENDINGS = '.?!'
 
 
-def rebuild_db(f):
-    def words(f):
-        for line in f:
-            for word in line.split():
-                yield word
-
-    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))  # Good God
-    fst = snd = None
-    for word in words(f):
+def rebuild_db(file):
+    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))  # Good God!
+    fst = snd = ''
+    for word in (word for line in file for word in line.split()):
         stats[fst][snd][word] += 1
+        fst, snd = snd, word
         if word[-1] in ENDINGS:
-            fst = snd = None
-        else:
-            fst, snd = snd, word
+            fst = snd = ''
 
     states = defaultdict(dict)
     for fst, seconds in stats.items():
-        for snd, thirds in seconds.items():
-            words = [word for word, _ in thirds.items()]
-            weights = [weight for _, weight in thirds.items()]
-            states[fst][snd] = [words, weights]
+        for snd, words in seconds.items():
+            states[fst][snd] = list(zip(*words.items()))
 
-    with open(expanduser('~/.lorem'), 'w+') as f:
-        json.dump({'states': states}, f, indent=4)
+    with open(expanduser('~/.lorem'), 'w') as file:
+        json.dump({'states': states}, file, indent=4)
 
 
 def generate_words(db, paragraphs, sentences):
@@ -42,12 +34,12 @@ def generate_words(db, paragraphs, sentences):
     for _ in range(paragraphs):
         print('  ', end='')
         for _ in range(sentences):
-            fst = 'null'
-            snd = word = random.choices(*states['null']['null'])[0]
+            fst = ''
+            snd = word = random.choices(*states[''][''])[0]
             words = [word.capitalize()]
             while word[-1] not in ENDINGS:
-                choices = states[fst][snd]
-                word = random.choices(*choices)[0]
+                choices, weights = states[fst][snd]
+                word = random.choices(choices, weights)[0]
                 words.append(word)
                 fst, snd = snd, word
             print(' '.join(words), end=' ')
