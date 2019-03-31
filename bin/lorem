@@ -57,7 +57,7 @@ def generate_words(states, paragraphs, sentences):
 def main():
     parser = argparse.ArgumentParser(description='Random text generator.')
     parser.add_argument('--paragraphs', '-p', type=int, default=3, help='Number of paragraphs.')
-    parser.add_argument('--sentences', '-s', type=int, default=10, help='Number of sentences per paragraph.')
+    parser.add_argument('--sentences', '-s', type=int, default=4, help='Number of sentences per paragraph.')
     parser.add_argument('--rebuild', action='store_true', help='Rebuild database with text from stdin.')
     args = parser.parse_args()
 
