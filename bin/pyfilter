@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+"""Python filter templates.
+
+Default filter: maps input.
+Sort filter: Uses the input as keyfunc.
+"""
+import argparse
+import sys
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Python filter templates.")
+    parser.add_argument("--sort", action='store_true', default=False, help='Sorts stdin with the supplied keyfunc.')
+    parser.add_argument("snippet", action='store', help='lambda line: <your snippet goes here>')
+    args = parser.parse_args()
+
+    source = 'lambda line:' + args.snippet
+    f = eval(compile(source, '<snippet>', 'eval'))
+
+    if args.sort:
+        for line in sorted(sys.stdin, key=f):
+            print(line.rstrip('\n'))
+    else:
+        for line in sys.stdin:
+            values = f(line.rstrip('\n'))
+            print(values)
