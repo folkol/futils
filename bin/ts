@@ -1,0 +1,1 @@
+while read; do echo "[`date`]: $REPLY"; done
