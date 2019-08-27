@@ -14,7 +14,7 @@ for line in sys.stdin:
     if line != previous:
         count = 0
     count += 1
-    if not sys.stdout.isatty() or (line != previous and previous is not None):
+    if previous is not None and (not sys.stdout.isatty() or line != previous):
         sys.stdout.write('\n')
     if sys.stdout.isatty():
         sys.stdout.write('\r')
