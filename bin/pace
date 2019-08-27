@@ -2,11 +2,12 @@
 import sys
 from time import sleep
 
+if '-h' in sys.argv or '--help' in sys.argv:
+    print('usage: pace [frequency]\n\n\tShoves [frequency] (defaults to 10) lines per second from stdin to stdout.')
+    sys.exit(0)
+
 pace = 10
 if len(sys.argv) > 1:
-    if sys.argv[1] == '-h':
-        print('usage: pace [frequency]\n\n\tShoves [frequency] (defaults to 100) lines per second from stdin to stdout.')
-        sys.exit(0)
     pace = float(sys.argv[1])
 
 for line in sys.stdin:
