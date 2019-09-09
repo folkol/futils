@@ -1,0 +1,6 @@
+if [ $# -ne 1 ]; then
+    echo 'usage: ff "SEARCH_TERM"' >&2
+    exit 1
+fi
+grep -iIr "$1" *
+find * -not -path "*venv*" -not -path "*node_modules*" -name "*$1*"
