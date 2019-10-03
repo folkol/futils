@@ -1,3 +1,7 @@
+# Source me for fun and profit
+# usage: bashed -> r filename -> p -> c LINENO -> w filename -> q
+# Known bugs: Currently adds space in beginning of all lines
+
 function bashed() {
     while :; do
         read -p '> ' CMD OPT
