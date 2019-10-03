@@ -1,6 +1,6 @@
 # Source me for fun and profit
 # usage: bashed -> r filename -> p -> c LINENO -> w filename -> q
-# Known bugs: Currently adds space in beginning of all lines
+# Known limitations: Can only edit single lines in place right now.
 
 function bashed() {
     while :; do
@@ -10,7 +10,7 @@ function bashed() {
             q) break ;;
             p) for line in "${!MAPFILE[@]}"; do echo -n "$line: " "${MAPFILE[$line]}"; done ;;
             c) read -p '>> ' -e -i "${MAPFILE[$OPT]}" && MAPFILE[$OPT]="$REPLY"$'\n' ;;
-            w) echo "${MAPFILE[@]}" >"$OPT" ;;
+            w) printf %s "${MAPFILE[@]}" $'\n' >"$OPT" ;;
             *) echo "Unknown command! Available commands: rqpcw" ;;
         esac
     done
