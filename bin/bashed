@@ -1,0 +1,13 @@
+function bashed() {
+    while :; do
+        read -p '> ' CMD OPT
+        case "$CMD" in
+            r) mapfile <"$OPT" ;;
+            q) break ;;
+            p) for line in "${!MAPFILE[@]}"; do echo -n "$line: " "${MAPFILE[$line]}"; done ;;
+            c) read -p '>> ' -e -i "${MAPFILE[$OPT]}" && MAPFILE[$OPT]="$REPLY"$'\n' ;;
+            w) echo "${MAPFILE[@]}" >"$OPT" ;;
+            *) echo "Unknown command! Available commands: rqpcw" ;;
+        esac
+    done
+}
