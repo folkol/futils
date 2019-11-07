@@ -10,7 +10,7 @@ function bashed() {
             q) break ;;
             p) for line in "${!MAPFILE[@]}"; do echo -n "$line: " "${MAPFILE[$line]}"; done ;;
             c) read -p '>> ' -e -i "${MAPFILE[$OPT]}" && MAPFILE[$OPT]="$REPLY"$'\n' ;;
-            w) printf %s "${MAPFILE[@]}" $'\n' >"$OPT" ;;
+            w) printf %s "${MAPFILE[@]}" >"$OPT" ;;
             *) echo "Unknown command! Available commands: rqpcw" ;;
         esac
     done
