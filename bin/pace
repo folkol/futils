@@ -6,7 +6,8 @@ from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE, SIG_DFL)
 
 if '-h' in sys.argv or '--help' in sys.argv:
-    print('usage: pace [frequency]\n\n\tShoves [frequency] (defaults to 10) lines per second from stdin to stdout.')
+    print("usage: pace [frequency]\n"
+          "    Shoves [frequency] (defaults to 10) lines per second from stdin to stdout.")
     sys.exit(0)
 
 pace = 10
