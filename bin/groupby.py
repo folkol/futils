@@ -15,7 +15,7 @@ def main(field, delimiter, unique):
         if len(key) > keysize:
             keysize = len(key)
         fields = (f for i, f in enumerate(fields) if i != field)
-        groups[key].append(' '.join(fields))
+        groups[key].extend(fields)
 
     for key in sorted(groups, key=str.lower):
         if args.humanize:
