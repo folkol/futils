@@ -5,7 +5,7 @@ from collections import defaultdict
 import re
 
 
-def main(field, delimiter):
+def main(field, delimiter, unique):
     keysize = 0
     groups = defaultdict(list)
     # TODO Find out how to pair argparse with fileinput.input
@@ -20,9 +20,13 @@ def main(field, delimiter):
     for key in sorted(groups, key=str.lower):
         if args.humanize:
             print(f'{key}:')
+            if unique:
+                groups[key] = set(groups[key])
             for value in sorted(groups[key], key=str.lower):
                 print(f' - {value}')
         else:
+            if unique:
+                groups[key] = set(groups[key])
             for value in sorted(groups[key]):
                 print(f'{key}\t{value}')
 
@@ -31,7 +35,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--field', type=int, default=1)
     parser.add_argument('-d', '--delimiter', default=r'\s+')
+    parser.add_argument('-u', '--unique', action='store_true', default=False)
     parser.add_argument('--humanize', action='store_true')
     args = parser.parse_args()
 
-    main(args.field - 1, args.delimiter)
+    main(args.field - 1, args.delimiter, args.unique)
