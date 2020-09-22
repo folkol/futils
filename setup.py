@@ -6,7 +6,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='folkol-utils',
-    version='0.0.3',
+    version='0.0.4',
     description='meta-package for various command line utilities (folkol.xxx)',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -20,7 +20,8 @@ setup(
         'License :: OSI Approved :: MIT License',
     ],
     install_requires=[
-        'folkol.grab'
+        'folkol.grab',
+        'folkol.yg',
     ],
     keywords='shell, unix filter',
     python_requires='>=3.6, <4',
