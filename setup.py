@@ -6,8 +6,8 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='folkol-utils',
-    version='0.0.2',
-    description='meta-package for various command line utilities (futils-xxx)',
+    version='0.0.3',
+    description='meta-package for various command line utilities (folkol.xxx)',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/folkol/futils',
@@ -20,7 +20,7 @@ setup(
         'License :: OSI Approved :: MIT License',
     ],
     install_requires=[
-        'futils-grab'
+        'folkol.grab'
     ],
     keywords='shell, unix filter',
     python_requires='>=3.6, <4',
