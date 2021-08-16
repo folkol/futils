@@ -19,11 +19,15 @@ def main(field, delimiter, unique):
 
     for key in sorted(groups, key=str.lower):
         if args.humanize:
-            print(f'{key}:')
+            print(f'{key}:', end=' ' if args.oneline else '\n')
             if unique:
                 groups[key] = set(groups[key])
-            for value in sorted(groups[key], key=str.lower):
-                print(f' - {value}')
+
+            if args.oneline:
+                print(', '.join(groups[key]))
+            else:
+                for value in sorted(groups[key], key=str.lower):
+                    print(f' - {value}')
         else:
             if unique:
                 groups[key] = set(groups[key])
@@ -37,6 +41,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--delimiter', default=r'\s+')
     parser.add_argument('-u', '--unique', action='store_true', default=False)
     parser.add_argument('--humanize', action='store_true')
+    parser.add_argument('--oneline', action='store_true')
     args = parser.parse_args()
 
     main(args.field - 1, args.delimiter, args.unique)
