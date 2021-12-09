@@ -1,1 +1,1 @@
-while read; do echo "[`date`]: $REPLY"; done
+while read; do echo "[`gdate -Iseconds`]: $REPLY"; done
