@@ -135,10 +135,14 @@ codes = {  # from man ascii
 chars = {v: k for k, v in codes.items()}
 
 if __name__ == '__main__':
-    for arg in sys.argv[1:]:
-        try:
-            code = int(arg)
-            print(code, codes[code])
-        except ValueError:
-            for c in arg:
-                print(c, chars[c])
+    if len(sys.argv) == 1:
+        for c, char in codes.items():
+            print(c, char)
+    else:
+        for arg in sys.argv[1:]:
+            try:
+                code = int(arg)
+                print(code, codes[code])
+            except ValueError:
+                for c in arg:
+                    print(c, chars[c])
