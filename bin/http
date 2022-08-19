@@ -68,6 +68,7 @@ codes = [
 ]
 
 if __name__ == "__main__":
+    found = False
     try:
         prefix = sys.argv[1]
     except IndexError:
@@ -75,5 +76,8 @@ if __name__ == "__main__":
     prefix = prefix.replace('x', '')
     for code in codes:
         if code.startswith(prefix):
+            found = True
             print(code)
+    if not found:
+        print('No match')
 
