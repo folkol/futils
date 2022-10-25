@@ -1,3 +1,7 @@
+"""Lorem Ipsum generator.
+Train it with random text: $ cat * | lorem --rebuild
+Generate text: $ lorem
+"""
 #! /usr/bin/env python3
 
 import argparse
