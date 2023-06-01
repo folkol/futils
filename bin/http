@@ -69,13 +69,9 @@ codes = [
 
 if __name__ == "__main__":
     found = False
-    try:
-        prefix = sys.argv[1]
-    except IndexError:
-        prefix = ''
-    prefix = prefix.replace('x', '')
+    query = [prefix.replace('x', '') for prefix in sys.argv[1:]]
     for code in codes:
-        if code.startswith(prefix):
+        if any(code.startswith(prefix) for prefix in query):
             found = True
             print(code)
     if not found:
