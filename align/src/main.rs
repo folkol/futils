@@ -21,8 +21,9 @@ fn main() {
             )
         })
         .collect();
+    dbg!(&lines);
     let max_indent = &lines.iter().map(|(x, _)| *x).max().unwrap_or(0);
     for (i, line) in lines {
-        println!("{:<foo$}  {line:>foo$}", "", foo = (max_indent - i))
+        println!("{:<foo$}  {line}", "", foo = (max_indent - i))
     }
 }
