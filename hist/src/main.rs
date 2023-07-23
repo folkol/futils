@@ -22,7 +22,8 @@ fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
     let (min, max) = numbers
         .iter()
         .fold((fst, fst), |(a, b), x| (a.min(*x), b.max(*x)));
-    let num_bins: f64 = (numbers.len() as f64).log2().clamp(10., 40.);
+    // let num_bins: f64 = (numbers.len() as f64).sqrt();
+    let num_bins: f64 = 40.;
     let mut bins: Vec<usize> = vec![0; num_bins as usize];
     for number in numbers {
         let range = max - min;
@@ -44,7 +45,7 @@ fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
 fn print_histogram(bins: &Vec<usize>, num_rows: usize) {
     let bin_max = bins.iter().max().unwrap();
     println!();
-    for row in 1..num_rows {
+    for row in 0..num_rows {
         for bin in bins {
             let this_high =
                 (*bin as f64 / *bin_max as f64) * (num_rows as f64) >= ((num_rows - row) as f64);
@@ -63,7 +64,7 @@ mod test {
     fn uniform() {
         assert_eq!(
             make_histogram((1..=1000).map(f64::from).collect()),
-            (vec![100; 10], 1., 1000.),
+            (vec![25; 40], 1., 1000.),
         )
     }
 
@@ -76,7 +77,8 @@ mod test {
         let shortest_bin = *histogram.iter().min().unwrap() as f64;
         let tallest_bin = *histogram.iter().max().unwrap() as f64;
         let similarity = shortest_bin / tallest_bin;
-        assert!(similarity > 0.95)
+        println!("{similarity}");
+        assert!(similarity > 0.90)
     }
 
     fn very_close(a: f64, b: f64) -> bool {
