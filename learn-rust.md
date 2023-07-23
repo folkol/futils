@@ -6,4 +6,6 @@
 4. [distinct](./distinct), uniq -- but keeps order
 5. [(reservoir) sample](./sampe), "Algorithm R"
 6. [hist](./hist), histogram of numbers on stdin
-6. [rand](./rand), generate random numbers
+7. [rand](./rand), generate random numbers
+8. [stats](./stats), calculate descriptive statistics for numbers on stdin
+9. [prefix](./prefix), prefixes [argument] to all lines on stdin, with placeholders
