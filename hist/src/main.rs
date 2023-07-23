@@ -70,10 +70,10 @@ mod test {
     #[test]
     fn uniform_large_evenly_distributed() {
         let (histogram, min, max) =
-            make_histogram((1..=100).flat_map(|x| [x as f64; 1000]).collect());
+            make_histogram((1..=1000).flat_map(|x| [x as f64; 1000]).collect());
         assert!(very_close(min, 1.), "Expected {min} to be very close to 1.");
         assert!(
-            very_close(max, 100.),
+            very_close(max, 1000.),
             "Expected {max} to be very close to 1000."
         );
         dbg!(&histogram);
