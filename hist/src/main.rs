@@ -23,8 +23,7 @@ fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
     let (min, max) = numbers
         .iter()
         .fold((fst, fst), |(a, b), x| (a.min(*x), b.max(*x)));
-    let num_distinct = numbers.into_iter().collect::<HashSet<f64>>().len();
-    let num_bins: f64 = num_distinct as f64;
+    let num_bins: f64 = 40.; // Maybe something like min(num_distinct, numbers.len()).sqrt()?
     let mut bins: Vec<usize> = vec![0; num_bins as usize];
     for number in numbers {
         let range = max - min;
