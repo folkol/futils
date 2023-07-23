@@ -63,7 +63,7 @@ mod test {
     fn uniform() {
         assert_eq!(
             make_histogram((1..=1000).map(f64::from).collect()),
-            (vec![25; 40], 1., 1000.),
+            (vec![50; 20], 1., 1000.),
         )
     }
 
