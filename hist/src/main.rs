@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::io::stdin;
 
 fn main() {
@@ -22,8 +23,8 @@ fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
     let (min, max) = numbers
         .iter()
         .fold((fst, fst), |(a, b), x| (a.min(*x), b.max(*x)));
-    // let num_bins: f64 = (numbers.len() as f64).sqrt();
-    let num_bins: f64 = 40.;
+    let num_distinct = numbers.into_iter().collect::<HashSet<f64>>().len();
+    let num_bins: f64 = num_distinct as f64;
     let mut bins: Vec<usize> = vec![0; num_bins as usize];
     for number in numbers {
         let range = max - min;
@@ -45,7 +46,7 @@ fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
 fn print_histogram(bins: &Vec<usize>, num_rows: usize) {
     let bin_max = bins.iter().max().unwrap();
     println!();
-    for row in 0..num_rows {
+    for row in 1..num_rows {
         for bin in bins {
             let this_high =
                 (*bin as f64 / *bin_max as f64) * (num_rows as f64) >= ((num_rows - row) as f64);
@@ -66,6 +67,23 @@ mod test {
             make_histogram((1..=1000).map(f64::from).collect()),
             (vec![25; 40], 1., 1000.),
         )
+    }
+
+    #[test]
+    fn uniform_large_evenly_distributed() {
+        let (histogram, min, max) =
+            make_histogram((1..=100).flat_map(|x| [x as f64; 1000]).collect());
+        assert!(very_close(min, 1.), "Expected {min} to be very close to 1.");
+        assert!(
+            very_close(max, 100.),
+            "Expected {max} to be very close to 1000."
+        );
+        dbg!(&histogram);
+        let shortest_bin = *histogram.iter().min().unwrap() as f64;
+        let tallest_bin = *histogram.iter().max().unwrap() as f64;
+        let similarity = shortest_bin / tallest_bin;
+        println!("{similarity}");
+        assert!(similarity > 0.90)
     }
 
     #[test]
