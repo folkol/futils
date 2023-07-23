@@ -17,6 +17,30 @@ fn main() {
     println!("max={max}");
 }
 
+fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
+    let fst: f64 = *numbers.first().unwrap();
+    let (min, max) = numbers
+        .iter()
+        .fold((fst, fst), |(a, b), x| (a.min(*x), b.max(*x)));
+    let num_bins: f64 = (numbers.len() as f64).log2().clamp(10., 40.);
+    let mut bins: Vec<usize> = vec![0; num_bins as usize];
+    for number in numbers {
+        let range = max - min;
+        let placement = (number - min) / (max - min);
+        let bin = (num_bins * placement) as usize;
+        let bin = bin.clamp(0, bins.len() - 1);
+        if bin as usize >= bins.len() {
+            println!(
+                "overflow: number={number} placement={placement} bin={bin} bin_usize={} bins.len={} range={range} max={max} min={min}",
+                bin as usize,
+                bins.len()
+            )
+        }
+        bins[bin] += 1;
+    }
+    (bins, min, max)
+}
+
 fn print_histogram(bins: &Vec<usize>, num_rows: usize) {
     let bin_max = bins.iter().max().unwrap();
     println!();
@@ -31,17 +55,31 @@ fn print_histogram(bins: &Vec<usize>, num_rows: usize) {
     println!();
 }
 
-fn make_histogram(numbers: Vec<f64>) -> (Vec<usize>, f64, f64) {
-    let fst: f64 = *numbers.first().unwrap();
-    let (min, max) = numbers
-        .iter()
-        .fold((fst, fst), |(a, b), x| (a.min(*x), b.max(*x)));
-    let num_bins: f64 = (numbers.len() as f64).log(1.5).ceil();
-    let mut bins: Vec<usize> = vec![0; num_bins as usize];
-    for number in numbers {
-        let range = max - min;
-        let bin = (num_bins * (number - 1. - min) / range).floor();
-        bins[bin as usize] += 1;
+#[cfg(test)]
+mod test {
+    use crate::make_histogram;
+
+    #[test]
+    fn uniform() {
+        assert_eq!(
+            make_histogram((1..=1000).map(f64::from).collect()),
+            (vec![100; 10], 1., 1000.),
+        )
     }
-    (bins, min, max)
+
+    #[test]
+    fn uniform_narrow_interval() {
+        let (histogram, min, max) =
+            make_histogram((666..=1666).map(|x| x as f64 / 200000.).collect());
+        assert!(very_close(min, 666. / 200000.));
+        assert!(very_close(max, 1666. / 200000.));
+        let shortest_bin = *histogram.iter().min().unwrap() as f64;
+        let tallest_bin = *histogram.iter().max().unwrap() as f64;
+        let similarity = shortest_bin / tallest_bin;
+        assert!(similarity > 0.95)
+    }
+
+    fn very_close(a: f64, b: f64) -> bool {
+        (a - b).abs() <= f64::MIN_POSITIVE
+    }
 }
