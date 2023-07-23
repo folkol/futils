@@ -12,14 +12,13 @@ fn main() {
     }
     let (bins, min, max) = make_histogram(numbers);
 
-    print_histogram(&bins, 10);
+    print_histogram(&bins, bins.len() / 2);
     println!("min={min}");
     println!("max={max}");
 }
 
 fn print_histogram(bins: &Vec<usize>, num_rows: usize) {
     let bin_max = bins.iter().max().unwrap();
-    let num_rows = bins.len() / 2;
     println!();
     for row in 1..num_rows {
         for bin in bins {
