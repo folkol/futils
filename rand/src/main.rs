@@ -8,28 +8,36 @@ use rand_distr::{Normal, Uniform};
 
 #[derive(Parser)]
 struct Args {
-    #[arg(long, group = "distribution", action)]
+    /// parameters: low (0), hi (1000)
+    #[arg(short, long, group = "distribution", action)]
     uniform: bool,
 
-    #[arg(long, group = "distribution", action)]
+    /// parameters: mu (100), sigma (15)
+    #[arg(short, long, group = "distribution", action)]
     normal: bool,
+
+    /// Distribution-specific parameters with some defaults
+    #[arg()]
+    params: Vec<isize>,
 }
 
 fn main() {
     let args = Args::parse();
     let rng = rand::thread_rng();
-    if args.uniform {
-        shoot(Uniform::new(0, 1000).sample_iter(rng))
-    } else if args.normal {
+
+    if args.normal {
+        let mu: f64 = *args.params.first().unwrap_or(&100) as f64;
+        let sigma: f64 = *args.params.get(1).unwrap_or(&15) as f64;
         shoot(
-            Normal::new(0., 1.)
+            Normal::new(mu as f64, sigma as f64)
                 .unwrap()
                 .sample_iter(rng)
-                .map(|x| 500 + (x * 250.) as isize)
-                .filter(|x| *x > 0 && *x < 1000),
-        )
+                .filter(|x| *x > mu - 3. * sigma && *x < mu + 3. * sigma),
+        );
     } else {
-        shoot(Uniform::new(0, 1000).sample_iter(rng))
+        let low: isize = *args.params.first().unwrap_or(&0);
+        let hi: isize = *args.params.get(1).unwrap_or(&1000);
+        shoot(Uniform::new(low, hi).sample_iter(rng))
     };
 }
 
