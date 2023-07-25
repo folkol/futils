@@ -22,3 +22,7 @@ curl https://www.gutenberg.org/cache/epub/2148/pg2148.txt \
     | sed '1,/NOTES TO THE SECOND/d;/^NOTES TO THE SECOND/q' \
     | grep -E '^ {6}' >corpus.txt
 ```
+
+## TODO
+
+writing and reading the JSON config is really slow.
