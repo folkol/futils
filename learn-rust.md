@@ -9,4 +9,5 @@
 7. [rand](./rand), generate random numbers
 8. [stats](./stats), calculate descriptive statistics for numbers on stdin
 9. [prefix](./prefix), prefixes [argument] to all lines on stdin, with placeholders
-10. [lorem](./lorem), ported the Python lorem to rust. Less feature, and lower! ¯\_(ツ)_/¯
+10. [lorem](./lorem), generates dummy text
+11. [pace](./pace), paces std-stdout flow
