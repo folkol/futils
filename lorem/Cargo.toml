@@ -1,0 +1,15 @@
+[package]
+name = "lorem"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+unicode-segmentation = "1.10.1"
+unicode-general-category = "0.6.0"
+rand = "0.8.5"
+serde = "1.0.172"
+serde_json = "1.0.103"
+clap = {version = "4.3.17", features = ["derive"]}
+home = "0.5.5"
