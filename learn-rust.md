@@ -12,3 +12,4 @@
 10. [lorem](./lorem), generates dummy text
 11. [pace](./pace), paces std-stdout flow
 12. [dbg](./dbg), (pipe)-debugger, like `pv`, but with samples
+13. [pick](./pick), pick (and optionally permute) columns
