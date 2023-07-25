@@ -11,3 +11,4 @@
 9. [prefix](./prefix), prefixes [argument] to all lines on stdin, with placeholders
 10. [lorem](./lorem), generates dummy text
 11. [pace](./pace), paces std-stdout flow
+12. [dbg](./dbg), (pipe)-debugger, like `pv`, but with samples
