@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 use std::env::home_dir;
 use std::fs::File;
-use std::io::{stdin, BufRead};
+use std::io::stdin;
+use std::io::BufRead;
 
 use clap::Parser;
 use rand::prelude::*;
@@ -67,7 +68,7 @@ fn main() {
         let result = File::open(config_file);
         let trigraphs: Vec<Trigraph> = match result {
             Ok(f) => serde_json::from_reader(f).expect("couldn't write config file"),
-            Err(e) => {
+            Err(_) => {
                 eprintln!("[ERROR]: Couldn't find config file, try recreating it with --rebuild");
                 std::process::exit(1);
             }
