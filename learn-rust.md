@@ -14,3 +14,4 @@
 12. [dbg](./dbg), (pipe)-debugger, like `pv`, but with samples
 13. [pick](./pick), pick (and optionally permute) columns
 14. [ascii](./ascii), print ascii table -- or convert "queries"
+15. [groupby](./groupby), groups lines by field 1
