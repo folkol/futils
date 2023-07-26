@@ -13,3 +13,4 @@
 11. [pace](./pace), paces std-stdout flow
 12. [dbg](./dbg), (pipe)-debugger, like `pv`, but with samples
 13. [pick](./pick), pick (and optionally permute) columns
+13. [ascii](./ascii), print ascii table -- or convert "queries"
