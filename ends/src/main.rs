@@ -15,7 +15,7 @@ fn main() {
             }
             buffer.push_back(line);
         }
-    };
+    }
     if i > 20 {
         println!("... {} more", i - 2 * n);
     }
