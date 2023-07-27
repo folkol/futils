@@ -15,5 +15,6 @@
 13. [pick](./pick), pick (and optionally permute) columns
 14. [ascii](./ascii), print ascii table -- or convert "queries"
 15. [groupby](./groupby), groups lines by field 1
-15. [cumsum](./cumsum), cumulative sum
-16. [tld](./tld), top-level domains (country)
+16. [cumsum](./cumsum), cumulative sum
+17. [tld](./tld), top-level domains (country)
+18. [ends](./ends), "ends", head and tail in one pass
