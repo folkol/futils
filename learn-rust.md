@@ -18,3 +18,4 @@
 16. [cumsum](./cumsum), cumulative sum
 17. [tld](./tld), top-level domains (country)
 18. [ends](./ends), "ends", head and tail in one pass
+19. [jwtdec](./jwtdec), decodes JWT and prints header and payload
