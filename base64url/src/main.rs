@@ -1,10 +1,16 @@
 use std::env::args;
-use std::io::{stdin, stdout, Read, Write};
+use std::io::{Read, stdin, stdout, Write};
 
-use base64::engine::{DecodePaddingMode, GeneralPurpose, GeneralPurposeConfig};
 use base64::{alphabet, Engine};
+use base64::engine::{DecodePaddingMode, GeneralPurpose, GeneralPurposeConfig};
 
 fn main() {
+    match args().nth(1) {
+        Some(arg) if arg == "--help" || arg == "-h" => {
+            usage();
+        }
+        _ => {}
+    }
     let mut parts: Vec<String> = args().skip(1).collect();
     if parts.is_empty() {
         let mut data = String::new();
@@ -24,6 +30,7 @@ fn main() {
 
 fn usage() -> ! {
     eprintln!("usage: base64url [DATA]... (reads from stdin if no args)");
+    eprintln!("    - only decode supported atm");
     std::process::exit(1);
 }
 
