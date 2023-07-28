@@ -6,7 +6,8 @@ fn main() {
     for line in 0..=3 {
         for n in 1..=w {
             let c = if n % 10 == 0 {
-                format!("{}", n).chars().nth(line).unwrap_or(' ').to_string()
+                let digit = format!("{}", n).chars().nth(line);
+                digit.unwrap_or(' ').to_string()
             } else if line == 0 && n % 5 == 0 {
                 "|".to_owned()
             } else if line == 0 {
