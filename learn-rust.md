@@ -23,3 +23,4 @@
 21. [urldecode](./urldecode), url decoder
 22. [urlencode](./urlencode), url encoder
 23. [rule](./rule), ported ruler to rust (and renamed it rule)
+24. [clock](../misc/clock), ascii-clock
