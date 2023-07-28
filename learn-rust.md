@@ -21,3 +21,4 @@
 19. [jwtdec](./jwtdec), decodes JWT and prints header and payload
 20. [base64url](./base64url), base64 -- but for base64 URL encodings
 21. [urldecode](./urldecode), url decoder
+22. [urlencode](./urlencode), url encoder
