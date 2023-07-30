@@ -3,6 +3,8 @@ use std::io::{stdin, BufRead, BufReader};
 
 use terminal_size::{Height, Width};
 
+const MARGIN: usize = 8;
+
 fn main() {
     let mut input = BufReader::new(stdin().lock());
     let (min, max, numbers) = parse_input(&mut input);
@@ -10,28 +12,30 @@ fn main() {
         eprintln!("Found no numbers");
         std::process::exit(1);
     }
-    let interval = max - min + 1.;
     let (Width(w), Height(h)) = terminal_size::terminal_size().unwrap_or((Width(79), Height(30)));
-    let w = w - 8;
-    let h = h - 8;
+    let w = w as usize - MARGIN;
+    let h = h as usize - MARGIN;
 
-    let num_items = numbers.len();
-    let mut coords: Vec<_> = numbers
-        .iter()
-        .enumerate()
-        .map(|(i, x)| (i, *x - min))
-        .map(|(i, x)| (i * w as usize / num_items, x * h as f64 / interval))
-        .map(|(i, x)| (i as u16, x as u16))
-        .collect();
-    coords.sort_by_key(|(i, _)| *i);
-    let points: HashSet<_> = HashSet::from_iter(coords);
+    let points = get_scaled_points(&numbers, min, max, w, h);
+    scatter_plot(points, min, max, w, h, numbers.len());
+}
+
+fn scatter_plot(
+    points: HashSet<(usize, usize)>,
+    min: f64,
+    max: f64,
+    w: usize,
+    h: usize,
+    num_items: usize,
+) {
+    let gutter = MARGIN - 2;
     for row in 0..=h {
         if row == 0 {
             print!("     ^");
         } else if row == 1 {
-            print!("{:>4} |", scale_num(max));
+            print!("{:>1$} |", scale_num(max), gutter - 2);
         } else if row == h {
-            print!("{:>4} |", scale_num(min));
+            print!("{:>1$} |", scale_num(min), gutter - 2);
         } else {
             print!("     |");
         }
@@ -44,12 +48,28 @@ fn main() {
         }
         println!();
     }
-    println!("     +{}>", "-".repeat(w as usize));
-    println!(
-        "      0{1:>0$}",
-        w as usize - 1,
-        scale_num(num_items as f64)
-    );
+    println!("     +{}>", "-".repeat(w));
+    println!("      0{1:>0$}", w - 1, scale_num(num_items as f64));
+}
+
+fn get_scaled_points(
+    numbers: &Vec<f64>,
+    min: f64,
+    max: f64,
+    w: usize,
+    h: usize,
+) -> HashSet<(usize, usize)> {
+    let num_items = numbers.len();
+    let interval = max - min + 1.;
+    let mut coords: Vec<_> = numbers
+        .iter()
+        .enumerate()
+        .map(|(i, x)| (i, *x - min))
+        .map(|(i, x)| (i * w / num_items, x * h as f64 / interval))
+        .map(|(i, x)| (i, x as usize))
+        .collect();
+    coords.sort_by_key(|(i, _)| *i);
+    HashSet::from_iter(coords)
 }
 
 fn scale_num(number: f64) -> String {
