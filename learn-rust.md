@@ -26,3 +26,4 @@
 24. [clock](../misc/clock), ascii-clock
 25. [magnifying-glass](../misc/magnifying-glass), old-school magnifying-glass effect
 26. [llen](./llen), line lengths
+27. [ddiff](./ddiff), ddiff (date-difference)
