@@ -24,3 +24,5 @@
 22. [urlencode](./urlencode), url encoder
 23. [rule](./rule), ported ruler to rust (and renamed it rule)
 24. [clock](../misc/clock), ascii-clock
+25. [magnifying-glass](../misc/magnifying-glass), old-school magnifying-glass effect
+26. [llen](./llen), line lengths
