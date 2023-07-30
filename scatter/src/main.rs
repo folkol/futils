@@ -31,13 +31,13 @@ fn scatter_plot(
     let gutter = MARGIN - 2;
     for row in 0..=h {
         if row == 0 {
-            print!("     ^");
+            print!("{:1$}^", ' ', gutter - 1);
         } else if row == 1 {
             print!("{:>1$} |", scale_num(max), gutter - 2);
         } else if row == h {
             print!("{:>1$} |", scale_num(min), gutter - 2);
         } else {
-            print!("     |");
+            print!("{:1$}|", ' ', gutter - 1);
         }
         for col in 0..=w {
             if points.contains(&(col, h - row)) {
@@ -48,8 +48,13 @@ fn scatter_plot(
         }
         println!();
     }
-    println!("     +{}>", "-".repeat(w));
-    println!("      0{1:>0$}", w - 1, scale_num(num_items as f64));
+    println!("{:indent$}+{}>", ' ', "-".repeat(w), indent = gutter - 1);
+    println!(
+        "{:gutter$}0{:>w$}",
+        ' ',
+        scale_num(num_items as f64),
+        w = w - 1,
+    );
 }
 
 fn get_scaled_points(
@@ -73,10 +78,12 @@ fn get_scaled_points(
 }
 
 fn scale_num(number: f64) -> String {
+    let num_digits = number.log10();
+    let precision = (2 - num_digits as usize).clamp(0, 2);
     if number > 9999. {
         format!("{:.e}", number)
     } else {
-        number.to_string()
+        format!("{:.precision$}", number)
     }
 }
 
