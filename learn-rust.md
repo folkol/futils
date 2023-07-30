@@ -27,3 +27,4 @@
 25. [magnifying-glass](../misc/magnifying-glass), old-school magnifying-glass effect
 26. [llen](./llen), line lengths
 27. [ddiff](./ddiff), ddiff (date-difference)
+28. [scatter](./scatter), scatter-plot of numbers from stdin
