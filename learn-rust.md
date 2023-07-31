@@ -30,3 +30,4 @@
 28. [scatter](./scatter), scatter-plot of numbers from stdin
 28. [stars](../misc/stars), screensaver-like stars
 29. [gen-strs](./gen-strs), generate strings matching regex
+30. [news](./news), read and display news feeds (RSS)
