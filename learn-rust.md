@@ -1,6 +1,6 @@
 # Learning rust, one program at the time!
 
-1. [words](./words), split stdin on words
+1. [words](../words), split stdin on words
 2. [align](./align), center lines on regex
 3. [count](./count), keeps counting, like perpetual seq!
 4. [distinct](./distinct), uniq -- but keeps order
@@ -28,3 +28,5 @@
 26. [llen](./llen), line lengths
 27. [ddiff](./ddiff), ddiff (date-difference)
 28. [scatter](./scatter), scatter-plot of numbers from stdin
+28. [stars](../misc/stars), screensaver-like stars
+29. [gen-strs](./gen-strs), generate strings matching regex
