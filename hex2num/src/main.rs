@@ -23,8 +23,9 @@ fn parse_and_print(color: String) -> Result<(), Box<dyn Error>> {
     if color.len() != 6 {
         return Err("Input must be exactly 6 hex digits long".into());
     }
-    print!("{} ", u8::from_str_radix(&color[0..2], 16)?);
-    print!("{} ", u8::from_str_radix(&color[2..4], 16)?);
-    println!("{}", u8::from_str_radix(&color[4..6], 16)?);
+    let r = u8::from_str_radix(&color[0..2], 16)?;
+    let g = u8::from_str_radix(&color[2..4], 16)?;
+    let b = u8::from_str_radix(&color[4..6], 16)?;
+    println!("{r}, {g}, {b}     {:.2}, {:.2}, {:.2}", r as f32 / 255., g as f32 / 255., b as f32 / 255.);
     Ok(())
 }
