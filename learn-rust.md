@@ -34,3 +34,4 @@
 31. [word-chain](../misc/word-chain), http://codekata.com/kata/kata19-word-chains/
 32. [pulsating-heart](../misc/bunch-o-bevy-apps/pulsating-heart), animated heart shape using Bevy
 33. [hex2dec](./hex2num), convert #HEXCOL to decimals (and fractions)
+34. [snake](../misc/bunch-o-bevy-apps/snake), did some snake thing in Bevy
