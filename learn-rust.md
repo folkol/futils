@@ -40,3 +40,5 @@
 37. [mini_gl_fb-still-image](../misc/pixel-poker/mini_gl_fb-still-image), drawing random walk to a mini_gl_fb buffer
 38. [mini_gl_fb-animation](../misc/pixel-poker/mini_gl_fb-animation), drawing random walk -- animated
 39. [bouncing_pixel](../misc/pixel-poker/bouncing_pixel), bounce a pixel (with trail) around with winit + Pixel
+40. [animated-sine-wav](../tutorials/nannou-simple-window), animated sine wave with nannou
+41. [mandelbrot](../misc/pixel-poker/mandelbrot), drew the mandelbrot fractal with minifb. Best so far!
