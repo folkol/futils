@@ -36,3 +36,7 @@
 33. [hex2dec](./hex2num), convert #HEXCOL to decimals (and fractions)
 34. [snake](../misc/bunch-o-bevy-apps/snake), did some snake thing in Bevy
 35. [particle-system](../misc/bunch-o-bevy-apps/particle-system), small particle system
+36. [animated-shader](../misc/bunch-o-bevy-apps/animated-shader), 2d rectangle with custom fragment shader
+37. [mini_gl_fb-still-image](../misc/pixel-poker/mini_gl_fb-still-image), drawing random walk to a mini_gl_fb buffer
+38. [mini_gl_fb-animation](../misc/pixel-poker/mini_gl_fb-animation), drawing random walk -- animated
+39. [bouncing_pixel](../misc/pixel-poker/bouncing_pixel), bounce a pixel (with trail) around with winit + Pixel
