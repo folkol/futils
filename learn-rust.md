@@ -35,3 +35,4 @@
 32. [pulsating-heart](../misc/bunch-o-bevy-apps/pulsating-heart), animated heart shape using Bevy
 33. [hex2dec](./hex2num), convert #HEXCOL to decimals (and fractions)
 34. [snake](../misc/bunch-o-bevy-apps/snake), did some snake thing in Bevy
+35. [particle-system](../misc/bunch-o-bevy-apps/particle-system), small particle system
