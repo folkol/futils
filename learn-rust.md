@@ -46,3 +46,4 @@
 43. [breakthrough](../misc/bunch-o-bevy-apps/breakthrough), break-out-ish
 44. [metaballs](../misc/bunch-o-bevy-apps/metaballs), a green metaball!
 45. [rainbow](../misc/pixel-poking/rainbow), spectrum-to-cie-to-rgb mapping
+46. [raycaster](../misc/pixel-poking/raycaster), wolfenstein-style raycaster
