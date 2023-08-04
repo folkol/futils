@@ -44,3 +44,4 @@
 41. [mandelbrot](../misc/pixel-poker/mandelbrot), drew the mandelbrot fractal with minifb. Best so far!
 42. [map-range](./map-range), map-range shell filter
 42. [breakthrough](../misc/bunch-o-bevy-apps/breakthrough), break-out-ish
+42. [metaballs](../misc/bunch-o-bevy-apps/metaballs), a green metaball!
