@@ -43,3 +43,4 @@
 40. [animated-sine-wav](../tutorials/nannou-simple-window), animated sine wave with nannou
 41. [mandelbrot](../misc/pixel-poker/mandelbrot), drew the mandelbrot fractal with minifb. Best so far!
 42. [map-range](./map-range), map-range shell filter
+42. [breakthrough](../misc/bunch-o-bevy-apps/breakthrough), break-out-ish
