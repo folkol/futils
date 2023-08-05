@@ -50,3 +50,4 @@
 47. [ripples](../misc/pixel-poking/ripples), some sine-ripples
 48. [filter-speed-comparison](../misc/filter-performance), comparing basic unix filter in various languages
 49. [interactive-fractal](../misc/bunch-o-bevy-apps/interactive-fractal), zoomable mandelbrot
+50. [bevy-crash-course-tutorial](../misc/bunch-o-bevy-apps/bevy-crash-course), followed some tutorial. Physics + sounds.
