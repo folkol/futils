@@ -49,3 +49,4 @@
 46. [raycaster](../misc/pixel-poking/raycaster), wolfenstein-style raycaster
 47. [ripples](../misc/pixel-poking/ripples), some sine-ripples
 48. [filter-speed-comparison](../misc/filter-performance), comparing basic unix filter in various languages
+49. [interactive-fractal](../misc/bunch-o-bevy-apps/interactive-fractal), zoomable mandelbrot
