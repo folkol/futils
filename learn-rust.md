@@ -52,3 +52,4 @@
 49. [interactive-fractal](../misc/bunch-o-bevy-apps/interactive-fractal), zoomable mandelbrot
 50. [bevy-crash-course-tutorial](../misc/bunch-o-bevy-apps/bevy-crash-course), followed some tutorial. Physics + sounds.
 51. [shooter-poc](../misc/bunch-o-bevy-apps/shooter), some basic shooter mechanics PoC
+52. [ued](./ued), micro-ed, for editing a single line in a file. WIP.
