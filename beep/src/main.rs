@@ -17,6 +17,12 @@ impl Brownian {
 
 const WINDOW: usize = 20;
 
+/*
+ https://docs.rs/rodio/latest/rodio/trait.Sample.html
+
+ - For f32, silence corresponds to the value 0.0.
+ - The minimum and maximum amplitudes are represented by -1.0 and 1.0 respectively.
+ */
 impl Iterator for Brownian {
     type Item = f32;
 
