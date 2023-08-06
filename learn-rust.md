@@ -45,13 +45,13 @@
 42. [map-range](./map-range), map-range shell filter
 43. [breakthrough](https://github.com/folkol/misc/tree/master/pixel-poking/bunch-o-bevy-apps/breakthrough), break-out-ish
 44. [metaballs](https://github.com/folkol/misc/tree/master/pixel-poking/bunch-o-bevy-apps/metaballs), a green metaball!
-45. [rainbow](https://github.com/folkol/misc/tree/master/pixel-poking/pixel-poking/rainbow), spectrum-to-cie-to-rgb mapping
-46. [raycaster](https://github.com/folkol/misc/tree/master/pixel-poking/pixel-poking/raycaster), wolfenstein-style raycaster
-47. [ripples](https://github.com/folkol/misc/tree/master/pixel-poking/pixel-poking/ripples), some sine-ripples
+45. [rainbow](https://github.com/folkol/misc/tree/master/pixel-poking/rainbow), spectrum-to-cie-to-rgb mapping
+46. [raycaster](https://github.com/folkol/misc/tree/master/pixel-poking/raycaster), wolfenstein-style raycaster
+47. [ripples](https://github.com/folkol/misc/tree/master/pixel-poking/ripples), some sine-ripples
 48. [filter-speed-comparison](https://github.com/folkol/misc/tree/master/pixel-poking/filter-performance), comparing basic unix filter in various languages
 49. [interactive-fractal](https://github.com/folkol/misc/tree/master/pixel-poking/bunch-o-bevy-apps/interactive-fractal), zoomable mandelbrot
 50. [bevy-crash-course-tutorial](https://github.com/folkol/misc/tree/master/pixel-poking/bunch-o-bevy-apps/bevy-crash-course), followed some tutorial. Physics + sounds.
 51. [shooter-poc](https://github.com/folkol/misc/tree/master/pixel-poking/bunch-o-bevy-apps/shooter), some basic shooter mechanics PoC
 52. [ued](./ued), micro-ed, for editing a single line in a file. WIP.
 53. [beep](./beep), generating some noise with rodio
-54. [rotating-cube](https://github.com/folkol/misc/tree/master/pixel-poking/pixel-poking/rotating-cube), old-school rotating cube!
+54. [rotating-cube](https://github.com/folkol/misc/tree/master/pixel-poking/rotating-cube), old-school rotating cube!
