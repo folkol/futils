@@ -55,3 +55,4 @@
 52. [ued](./ued), micro-ed, for editing a single line in a file. WIP.
 53. [beep](./beep), generating some noise with rodio
 54. [rotating-cube](https://github.com/folkol/misc/tree/master/pixel-poking/rotating-cube), old-school rotating cube!
+55. [interer-sort](https://github.com/folkol/misc/tree/master/integer-sort), integer-sort and criterion-comparison
