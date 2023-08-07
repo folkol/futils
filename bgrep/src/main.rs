@@ -1,7 +1,7 @@
+use std::cmp::Ordering;
 use std::fs::File;
 use std::io::{Error, SeekFrom};
 use std::io::Seek;
-use std::str;
 
 use clap::Parser;
 use memmap::{Mmap, MmapOptions};
@@ -32,15 +32,16 @@ fn do_it(pattern: String, filename: String) -> Result<(), Error> {
     let mut hi = size;
     let mut lo = 0;
     while lo < hi {
-        let next = find_beginning_of_line(&mmap, ((hi + lo) / 2) as i64);
+        let next = ((hi + lo) / 2) as i64;
+        let next = find_beginning_of_line(&mmap, next);
         let here = &mmap[next..next + k];
-        if pattern == here {
-            println!("Found it at {next}");
-            return Ok(());
-        } else if here < pattern {
-            lo = find_next_line(&mmap, next, size);
-        } else {
-            hi = next - 1;
+        match here.cmp(pattern) {
+            Ordering::Equal => {
+                println!("Found it at {next}");
+                return Ok(());
+            }
+            Ordering::Less => lo = find_next_line(&mmap, next, size),
+            Ordering::Greater => hi = next - 1,
         }
     }
 
