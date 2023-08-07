@@ -61,3 +61,4 @@
 58. [rgb-palette](https://github.com/folkol/misc/tree/master/pixel-poking/rgb-palette), (0)rgb colors in bit order
 59. [merge](./merge), merge already sorted files, like sort -m
 60. [bgrep](./bgrep), binary search text file for line beginning with pattern
+61. [num-to-bin](./num-to-bin), parse number from ascii to binary
