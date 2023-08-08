@@ -38,7 +38,7 @@ fn main() {
                 continue;
             }
         };
-        let x = num.to_be_bytes();
+        let x = num.to_le_bytes();
         // TODO: Warn if tty?
         stdout().write_all(&x[..]).unwrap();
     }
