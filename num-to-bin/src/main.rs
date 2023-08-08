@@ -1,7 +1,8 @@
-use std::io::{stdin, stdout, Write};
+use std::io::ErrorKind::BrokenPipe;
+use std::io::{stdin, stdout, BufWriter, Write};
 
-use clap::{Parser, ValueEnum};
 use clap::builder::PossibleValue;
+use clap::{Parser, ValueEnum};
 
 #[derive(Clone)]
 enum ByteOrder {
@@ -24,11 +25,12 @@ impl ValueEnum for ByteOrder {
 
 #[derive(Parser)]
 struct Args {
-    #[arg(long, short, default_value_t = ByteOrder::BigEndian, value_enum)]
+    #[arg(long, short, default_value_t = ByteOrder::LittleEndian, value_enum)]
     byte_order: ByteOrder,
 }
 
 fn main() {
+    let mut out = BufWriter::new(stdout().lock());
     let args = Args::parse();
     for line in stdin().lines().map_while(Result::ok) {
         let num: u32 = match line.parse() {
@@ -38,8 +40,18 @@ fn main() {
                 continue;
             }
         };
-        let x = num.to_le_bytes();
         // TODO: Warn if tty?
-        stdout().write_all(&x[..]).unwrap();
+        let bytes = match args.byte_order {
+            ByteOrder::LittleEndian => num.to_le_bytes(),
+            ByteOrder::BigEndian => num.to_be_bytes(),
+        };
+
+        match out.write_all(&bytes[..]) {
+            Ok(_) => {}
+            Err(n) if n.kind() == BrokenPipe => break,
+            Err(e) => {
+                eprintln!("Something went wrong: ({e})")
+            }
+        }
     }
 }
