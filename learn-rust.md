@@ -64,6 +64,8 @@
 61. [num-to-bin](./num-to-bin), parse number from ascii to binary
 62. [bin-to-num](./bin-to-num), convert binary to ascii. Only LE u32 for now.
 63. [roll](https://github.com/folkol/apl-inspired-filters/tree/master/roll), bunch of unix filters inspired by [APL](https://aplwiki.com/wiki/Mnemonics)
-64. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added monadic ceiling and started on input-parsing as lib
-65. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added dyadic ceiling, no scalar extension yet
+64. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/upstile), added monadic upstile (ceiling) and started on input-parsing as lib
+65. [maximum](https://github.com/folkol/apl-inspired-filters/tree/master/upstile), added dyadic upstile (maximum), no scalar extension yet
 66. [plus](https://github.com/folkol/apl-inspired-filters/tree/master/plus), added plus, but with monadic to be inc rather than conjugate
+67. [lcm](https://github.com/folkol/apl-inspired-filters/tree/master/lcm), added lcm, least common multiplier
+68. [bang](https://github.com/folkol/apl-inspired-filters/tree/master/bang), added bang/exclamation mark (factorial vs binomial)
