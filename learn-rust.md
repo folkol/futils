@@ -62,3 +62,5 @@
 59. [merge](./merge), merge already sorted files, like sort -m
 60. [bgrep](./bgrep), binary search text file for line beginning with pattern
 61. [num-to-bin](./num-to-bin), parse number from ascii to binary
+62. [bin-to-num](./bin-to-num), convert binary to ascii. Only LE u32 for now.
+63. [roll](https://github.com/folkol/apl-inspired-filters/tree/master/roll), bunch of unix filters inspired by [APL](https://aplwiki.com/wiki/Mnemonics)
