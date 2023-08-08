@@ -66,3 +66,4 @@
 63. [roll](https://github.com/folkol/apl-inspired-filters/tree/master/roll), bunch of unix filters inspired by [APL](https://aplwiki.com/wiki/Mnemonics)
 64. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added monadic ceiling and started on input-parsing as lib
 65. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added dyadic ceiling, no scalar extension yet
+66. [plus](https://github.com/folkol/apl-inspired-filters/tree/master/plus), added plus, but with monadic to be inc rather than conjugate
