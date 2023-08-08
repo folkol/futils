@@ -64,4 +64,5 @@
 61. [num-to-bin](./num-to-bin), parse number from ascii to binary
 62. [bin-to-num](./bin-to-num), convert binary to ascii. Only LE u32 for now.
 63. [roll](https://github.com/folkol/apl-inspired-filters/tree/master/roll), bunch of unix filters inspired by [APL](https://aplwiki.com/wiki/Mnemonics)
-64. [ceil](https://github.com/folkol/apl-inspired-filters/tree/master/ceil), added monadic ceil and started on input-parsing as lib
+64. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added monadic ceiling and started on input-parsing as lib
+65. [ceiling](https://github.com/folkol/apl-inspired-filters/tree/master/ceiling), added dyadic ceiling, no scalar extension yet
