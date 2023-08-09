@@ -70,3 +70,6 @@
 67. [lcm](https://github.com/folkol/apl-inspired-filters/tree/master/lcm), added lcm, least common multiplier
 68. [bang](https://github.com/folkol/apl-inspired-filters/tree/master/bang), added bang/exclamation mark (factorial vs binomial)
 69. [deal](https://github.com/folkol/apl-inspired-filters/tree/master/deal), added dyadic roll (deal)
+70. [decode](https://github.com/folkol/apl-inspired-filters/tree/master/decode), added decode
+71. [times](https://github.com/folkol/apl-inspired-filters/tree/master/times), added times
+72. [divide](https://github.com/folkol/apl-inspired-filters/tree/master/divide), added divide
