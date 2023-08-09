@@ -69,3 +69,4 @@
 66. [plus](https://github.com/folkol/apl-inspired-filters/tree/master/plus), added plus, but with monadic to be inc rather than conjugate
 67. [lcm](https://github.com/folkol/apl-inspired-filters/tree/master/lcm), added lcm, least common multiplier
 68. [bang](https://github.com/folkol/apl-inspired-filters/tree/master/bang), added bang/exclamation mark (factorial vs binomial)
+69. [deal](https://github.com/folkol/apl-inspired-filters/tree/master/deal), added dyadic roll (deal)
