@@ -76,3 +76,4 @@
 73. [encode](https://github.com/folkol/apl-inspired-filters/tree/master/encode), added encode
 74. [circle](https://github.com/folkol/apl-inspired-filters/tree/master/circle), added monadic circle
 75. [circle](https://github.com/folkol/apl-inspired-filters/tree/master/circle), added dyadic circle
+76. [equal](https://github.com/folkol/apl-inspired-filters/tree/master/equal), added equal
