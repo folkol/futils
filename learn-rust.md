@@ -71,6 +71,6 @@
 68. [bang](https://github.com/folkol/apl-inspired-filters/tree/master/bang), added bang/exclamation mark (factorial vs binomial)
 69. [deal](https://github.com/folkol/apl-inspired-filters/tree/master/deal), added dyadic roll (deal)
 70. [decode](https://github.com/folkol/apl-inspired-filters/tree/master/decode), added decode
-71. [times](https://github.com/folkol/apl-inspired-filters/tree/master/times), added times
+71. [multiply](https://github.com/folkol/apl-inspired-filters/tree/master/multiply), added multiply
 72. [divide](https://github.com/folkol/apl-inspired-filters/tree/master/divide), added divide
 73. [encode](https://github.com/folkol/apl-inspired-filters/tree/master/encode), added encode
