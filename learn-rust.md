@@ -80,4 +80,5 @@
 77. [maze-generator](https://github.com/folkol/misc/tree/master/pixel-poking/maze-generator), maze-generator
 78. [not](https://github.com/folkol/apl-inspired-filters/tree/master/not), added monadic not
 79. [not](https://github.com/folkol/apl-inspired-filters/tree/master/not), added dyadic not
-80. [power](https://github.com/folkol/apl-inspired-filters/tree/master/power), added power (e** / x ** y)
+80. [power](https://github.com/folkol/apl-inspired-filters/tree/master/power), added power (e** / x \** y)
+77. [drunken-bishop](https://github.com/folkol/misc/tree/master/drunken-bishop/), (animated) drunken bishop
