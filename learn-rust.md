@@ -81,6 +81,6 @@
 78. [not](https://github.com/folkol/apl-inspired-filters/tree/master/not), added monadic not
 79. [not](https://github.com/folkol/apl-inspired-filters/tree/master/not), added dyadic not
 80. [power](https://github.com/folkol/apl-inspired-filters/tree/master/power), added power (e** / x \** y)
-77. [drunken-bishop](https://github.com/folkol/misc/tree/master/drunken-bishop/), (animated) drunken bishop
-78. [casey-circle](https://github.com/folkol/misc/tree/master/casey-circle/), ported Casey's circle drawing algo
-79. [casey-circle](https://github.com/folkol/misc/tree/master/pixel-poking/casey-circle/), Casey's Circle, animated
+81. [drunken-bishop](https://github.com/folkol/misc/tree/master/drunken-bishop/), (animated) drunken bishop
+82. [casey-circle](https://github.com/folkol/misc/tree/master/casey-circle/), ported Casey's circle drawing algo
+83. [casey-circle](https://github.com/folkol/misc/tree/master/pixel-poking/casey-circle/), Casey's Circle, animated
