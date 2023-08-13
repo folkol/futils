@@ -84,3 +84,4 @@
 81. [drunken-bishop](https://github.com/folkol/misc/tree/master/drunken-bishop/), (animated) drunken bishop
 82. [casey-circle](https://github.com/folkol/misc/tree/master/casey-circle/), ported Casey's circle drawing algo
 83. [casey-circle](https://github.com/folkol/misc/tree/master/pixel-poking/casey-circle/), Casey's Circle, animated
+84. [actix-proto](https://github.com/folkol/misc/tree/master/web-server-benchmarks/json_vs_protobuf/actix_web), Protobuf vs JSON in Actix Web
