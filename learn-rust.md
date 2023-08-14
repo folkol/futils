@@ -86,3 +86,4 @@
 83. [casey-circle](https://github.com/folkol/misc/tree/master/pixel-poking/casey-circle/), Casey's Circle, animated
 84. [actix-proto](https://github.com/folkol/misc/tree/master/web-server-benchmarks/json_vs_protobuf/actix_web), Protobuf vs JSON in Actix Web
 85. [ping-server-comparison](https://github.com/folkol/misc/tree/master/web-server-benchmarks/ping-server/), ping server comparison
+86. [bresenham+unsafe](https://github.com/folkol/misc/tree/master/pixel-poking/bresenham/), bresenham + unsafe static mutation
