@@ -87,3 +87,4 @@
 84. [actix-proto](https://github.com/folkol/misc/tree/master/web-server-benchmarks/json_vs_protobuf/actix_web), Protobuf vs JSON in Actix Web
 85. [ping-server-comparison](https://github.com/folkol/misc/tree/master/web-server-benchmarks/ping-server/), ping server comparison
 86. [bresenham+unsafe](https://github.com/folkol/misc/tree/master/pixel-poking/bresenham/), bresenham + unsafe static mutation
+87. [rust-collections-performance](https://github.com/folkol/misc/tree/master/rust-collections-performance/), some collection comparions + criterion
