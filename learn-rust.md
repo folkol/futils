@@ -90,3 +90,4 @@
 87. [rust-collections-performance](https://github.com/folkol/misc/tree/master/rust-collections-performance/), some collection comparions + criterion
 88. [macro-rules](https://github.com/folkol/misc/tree/master/rust-collections-performance/), tried macro_rules
 89. [perlin-noise](https://github.com/folkol/misc/tree/master/pixel-poking/perlin/), 2d perlin noise
+90. [matrix](https://github.com/folkol/misc/tree/master/matrix/), matrix-like animation (ascii)
