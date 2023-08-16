@@ -89,3 +89,4 @@
 86. [bresenham+unsafe](https://github.com/folkol/misc/tree/master/pixel-poking/bresenham/), bresenham + unsafe static mutation
 87. [rust-collections-performance](https://github.com/folkol/misc/tree/master/rust-collections-performance/), some collection comparions + criterion
 88. [macro-rules](https://github.com/folkol/misc/tree/master/rust-collections-performance/), tried macro_rules
+89. [perlin-noise](https://github.com/folkol/misc/tree/master/pixel-poking/perlin/), 2d perlin noise
