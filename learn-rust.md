@@ -96,3 +96,4 @@
 94. [ge](https://github.com/folkol/apl-inspired-filters/tree/master/ge), ge
 95. [residue](https://github.com/folkol/apl-inspired-filters/tree/master/residue), residue
 96. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), some cosine interpolated value noise
+97. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), added octaves
