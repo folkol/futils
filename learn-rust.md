@@ -98,3 +98,4 @@
 96. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), some cosine interpolated value noise
 97. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), added octaves
 98. [cave-crawl](https://github.com/folkol/misc/tree/master/cave-crawl/), ascii cave game
+99. [toy-redis](https://github.com/folkol/misc/tree/master/toy-redis/), mini-redis with SET and GET
