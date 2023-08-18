@@ -97,3 +97,4 @@
 95. [residue](https://github.com/folkol/apl-inspired-filters/tree/master/residue), residue
 96. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), some cosine interpolated value noise
 97. [value-noise](https://github.com/folkol/misc/tree/master/pixel-poking/value-noise), added octaves
+98. [cave-crawl](https://github.com/folkol/misc/tree/master/cave-crawl/), ascii cave game
