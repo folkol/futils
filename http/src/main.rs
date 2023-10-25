@@ -64,10 +64,12 @@ const CODES: &[&str] = &[
     "599 Network Connect Timeout Error (Server Error)",
 ];
 
-
 fn main() {
     let mut found = false;
-    let query: Vec<_> = std::env::args().skip(1).map(|x| x.replace('x', "")).collect();
+    let query: Vec<_> = std::env::args()
+        .skip(1)
+        .map(|x| x.replace('x', ""))
+        .collect();
     for code in CODES {
         if query.iter().any(|x| code.starts_with(x)) {
             found = true;
