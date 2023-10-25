@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-import sys
-
-codes = [
+const CODES: &[&str] = &[
     "100 Continue (Informational)",
     "101 Switching Protocols (Informational)",
     "102 Processing (Informational)",
@@ -65,15 +62,19 @@ codes = [
     "510 Not Extended (Server Error)",
     "511 Network Authentication Required (Server Error)",
     "599 Network Connect Timeout Error (Server Error)",
-]
+];
 
-if __name__ == "__main__":
-    found = False
-    query = [prefix.replace('x', '') for prefix in sys.argv[1:]]
-    for code in codes:
-        if any(code.startswith(prefix) for prefix in query):
-            found = True
-            print(code)
-    if not found:
-        print('No match')
 
+fn main() {
+    let mut found = false;
+    let query: Vec<_> = std::env::args().skip(1).map(|x| x.replace('x', "")).collect();
+    for code in CODES {
+        if query.iter().any(|x| code.starts_with(x)) {
+            found = true;
+            println!("{}", code)
+        }
+    }
+    if !found {
+        println!("No match")
+    }
+}
