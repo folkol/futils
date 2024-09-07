@@ -1,6 +1,6 @@
 use std::env::args;
 use std::io::stdin;
-use unicode_segmentation::{GraphemeCursor, UnicodeSegmentation};
+use unicode_segmentation::UnicodeSegmentation;
 
 use regex::Regex;
 
