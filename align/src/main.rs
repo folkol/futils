@@ -1,6 +1,7 @@
 use colored::Colorize;
 use std::env::args;
 use std::io::stdin;
+use std::io::IsTerminal;
 
 use regex::{Regex, RegexBuilder};
 use unicode_segmentation::UnicodeSegmentation;
@@ -8,12 +9,11 @@ use unicode_segmentation::UnicodeSegmentation;
 fn main() {
     let regex: Regex = match args().nth(1) {
         None => panic!("usage: align PATTERN"),
-        Some(pattern) => {
-            RegexBuilder::new(&pattern)
-                .unicode(true)
-                .case_insensitive(true)
-                .build().unwrap()
-        }
+        Some(pattern) => RegexBuilder::new(&pattern)
+            .unicode(true)
+            .case_insensitive(true)
+            .build()
+            .unwrap(),
     };
 
     let mut max_indent = 0;
@@ -24,7 +24,8 @@ fn main() {
             regex.find(&line).map(|m| {
                 let my_line = line.clone();
                 let (indent, begin, end) = 'block: {
-                    let grapheme_indices = line.grapheme_indices(true).enumerate().collect::<Vec<_>>();
+                    let grapheme_indices =
+                        line.grapheme_indices(true).enumerate().collect::<Vec<_>>();
                     for (indent, (i, _)) in grapheme_indices.into_iter() {
                         if i == m.start() {
                             max_indent = max_indent.max(indent);
@@ -37,13 +38,19 @@ fn main() {
             })
         })
         .collect();
+
     for (indent, begin, end, line) in lines {
-        println!(
-            "{:<indent$}  {}{}{}",
-            "",
-            &line[..begin],
-            &line[begin..end].green().bold(),
-            &line[end..],
-            indent = max_indent - indent)
+        if std::io::stdout().is_terminal() {
+            println!(
+                "{:<indent$}  {}{}{}",
+                "",
+                &line[..begin],
+                &line[begin..end].green().bold(),
+                &line[end..],
+                indent = max_indent - indent
+            )
+        } else {
+            println!("{:<indent$}  {}", "", line, indent = max_indent - indent);
+        }
     }
 }
