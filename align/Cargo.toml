@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 regex = "1.9.1"
 unicode-segmentation = "1.11.0"
+colored = "2.1.0"
