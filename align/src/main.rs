@@ -1,4 +1,4 @@
-use colored::Colorize;
+use colored::{ColoredString, Colorize};
 use std::env::args;
 use std::io::stdin;
 use std::io::IsTerminal;
@@ -39,18 +39,19 @@ fn main() {
         })
         .collect();
 
-    for (indent, begin, end, line) in lines {
-        if std::io::stdout().is_terminal() {
-            println!(
-                "{:<indent$}  {}{}{}",
-                "",
-                &line[..begin],
-                &line[begin..end].green().bold(),
-                &line[end..],
-                indent = max_indent - indent
-            )
+    for (current_indent, begin, end, line) in lines {
+        let alignment_match: ColoredString = if std::io::stdout().is_terminal() {
+            line[begin..end].green().bold()
         } else {
-            println!("{:<indent$}  {}", "", line, indent = max_indent - indent);
-        }
+            line[begin..end].into()
+        };
+        let indent = max_indent - current_indent;
+        println!(
+            "{:<indent$}  {}{}{}",
+            "",
+            &line[..begin],
+            alignment_match,
+            &line[end..],
+        )
     }
 }
