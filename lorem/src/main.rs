@@ -77,7 +77,7 @@ fn main() {
         eprintln!("Read trigraph, let's go!");
         for _ in 1..=args.paragraphs {
             for _ in 1..=args.sentences {
-                let mut rng = thread_rng();
+                let mut rng = rand::rng();
                 let mut fst: String = "".into();
                 let mut snd: String = "".into();
                 let mut word: String = "".into();
